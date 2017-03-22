@@ -8,8 +8,8 @@
 </head>
 
 <body>
+    <h1>Todo List</h1>
     <div>
-        <button onclick="handlers.displayTodos()">Display Todo</button>
         <button onclick="handlers.toggleAll()">Toggle All</button>
     </div>
     <br>
@@ -18,17 +18,25 @@
         <input id="addTodoTextInput" type="text">
     </div>
     <br>
+
     <div>
         <button onclick="handlers.changeTodo()">Change Todo</button>
         <input id="changeTodoPositionInput" type="number" placeholder="position"></input>
-        <input id="changeTodoTextInput" type="text" placeholder="new todo"></input>
+        <input id="changeTodoTextInput" type="text" placeholder="new todo text"></input>
     </div>
     <br>
     <div>
         <button onclick="handlers.deleteTodo()">Delete Todo</button>
         <input id="deleteTodoPositionInput" type="number" placeholder="position"></input>
     </div>
-<script src="todo-app.js"></script>
+    <br>
+    <div>
+        <button onclick="handlers.toggleCompleted()">Toggle Completed</button>
+        <input id="toggleCompletedTodoPosition" type="number" placeholder="position"></input>
+    </div>
+
+    <ul></ul>
+    <script src="todo-app.js"></script>
 </body>
 
 </html>
