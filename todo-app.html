@@ -4,38 +4,30 @@
 <head>
     <meta charset="utf-8">
     <title>To Do App</title>
+    <link rel="stylesheet" href="cssreset.css">
     <link rel="stylesheet" href="todo-app.css">
 </head>
 
 <body>
-    <h1>Todo List</h1>
-    <div>
-        <button onclick="handlers.toggleAll()">Toggle All</button>
-    </div>
-    <br>
-    <div>
-        <button onclick="handlers.addTodo()">Add</button>
-        <input id="addTodoTextInput" type="text">
-    </div>
-    <br>
+    <main>
+        <header>
+            <h1>todos</h1>
+        </header>
+        
+            <div class="todoContainer">
+                <div class="select"></div>
+                <div class="inputContainer">
+                    <input onkeypress="handlers.addTodo(event)" type="text" placeholder="What needs to be done?" id="addTodoTextInput">
+                </div>
+                <div class="toggle"></div>
+            </div>
+        <div id="parentContainer"></div>
 
-    <div>
-        <button onclick="handlers.changeTodo()">Change Todo</button>
-        <input id="changeTodoPositionInput" type="number" placeholder="position"></input>
-        <input id="changeTodoTextInput" type="text" placeholder="new todo text"></input>
-    </div>
-    <br>
-    <div>
-        <button onclick="handlers.deleteTodo()">Delete Todo</button>
-        <input id="deleteTodoPositionInput" type="number" placeholder="position"></input>
-    </div>
-    <br>
-    <div>
-        <button onclick="handlers.toggleCompleted()">Toggle Completed</button>
-        <input id="toggleCompletedTodoPosition" type="number" placeholder="position"></input>
-    </div>
 
-    <ul></ul>
+
+    </main>
+
+
     <script src="todo-app.js"></script>
 </body>
 

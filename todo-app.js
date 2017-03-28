@@ -1,92 +1,90 @@
-var todoList = {
+
+
+//Model
+var todoModel = {
     todos: [],
-    addTodo: function (todoText) {
-        this.todos.push({
-            todoText: todoText,
-            completed: false
-        });
+    //function to add todos
+    addTodo: function(todo) {
+        this.todos.push({todoText: todo, complete: false});
     },
-    changeTodo: function (position, newText) {
-        this.todos[position].todoText = newText;
+    deleteTodo: function(todo) {
+        this.todos.splice(todo, 1);
     },
-    deleteTodo: function (position) {
-        this.todos.splice(position, 1);
-    },
-    toggleCompleted: function (position) {
-        var todo = this.todos[position];
-        todo.completed = !todo.completed;
-    },
-    toggleAll: function () {
-        var totalTodos = this.todos.length;
-        var completedTodos = 0;
-        for (var i = 0; i < this.todos.length; i++) {
-            if (this.todos[i].completed === true) {
-                completedTodos++;
-            }
+    toggleTodo: function(todo) {
+        this.todos[todo].complete = !this.todos[todo].complete;
+    }
+    
+}
+
+//View
+var todoShow = {
+
+    displayTodos: function() {
+        var parentContainer = document.querySelector("#parentContainer");
+
+        while(parentContainer.firstChild) {
+            parentContainer.removeChild(parentContainer.lastChild);
         }
-        if (completedTodos == totalTodos) {
-            for (var i = 0; i < this.todos.length; i++) {
-                this.todos[i].completed = false;
-            }
-        } else {
-            for (var i = 0; i < this.todos.length; i++) {
-                this.todos[i].completed = true;
-            }
+
+        for(var i = 0; i < todoModel.todos.length; i++) {
+            //create todo container div
+            var todoContainerDiv = document.createElement("div");
+            todoContainerDiv.className = "todoContainer";
+
+            //create Input Container Div
+             var inputContainerDiv = document.createElement("div");
+             inputContainerDiv.className = "inputContainer";
+
+             //create select tag
+              var selectDiv = document.createElement("div");
+              selectDiv.innerHTML = "<p onclick='handlers.toggleTodo(event)'>O</p>";
+              selectDiv.className = "select";
+              selectDiv.id = i; 
+
+             //create input tag
+             var inputTag = document.createElement("input");
+             inputTag.setAttribute("value", todoModel.todos[i].todoText);
+             if(todoModel.todos[i].complete) {
+                 inputTag.className = "complete";
+             }
+
+             //create toggle tag
+              var toggleDiv = document.createElement("div");
+              toggleDiv.innerHTML = "<p onclick='handlers.deleteTodo(event)'>X</p>";
+              toggleDiv.className = "toggle";
+              toggleDiv.id = i; 
+
+             //append inputContainer Div to Container Div
+             inputContainerDiv.appendChild(inputTag);
+             todoContainerDiv.appendChild(selectDiv);
+             todoContainerDiv.appendChild(inputContainerDiv);
+             todoContainerDiv.appendChild(toggleDiv);
+             parentContainer.appendChild(todoContainerDiv);
+
         }
     }
-};
+}
 
+//Controller
 var handlers = {
-    addTodo: function () {
-        var addTodoTextInput = document.getElementById("addTodoTextInput");
-        todoList.addTodo(addTodoTextInput.value);
-        addTodoTextInput.value = "";
-        view.displayTodos();
-    },
-    changeTodo: function () {
-        var changeTodoPositionInput = document.getElementById("changeTodoPositionInput");
-        var changeTodoTextInput = document.getElementById("changeTodoTextInput");
-        todoList.changeTodo(changeTodoPositionInput.valueAsNumber, changeTodoTextInput.value);
-        changeTodoPositionInput.value = "";
-        changeTodoTextInput.value = "";
-        view.displayTodos();
-    },
-    deleteTodo: function () {
-        var deleteTodoPositionInput = document.getElementById("deleteTodoPositionInput");
-        todoList.deleteTodo(deleteTodoPositionInput.valueAsNumber);
-        deleteTodoPositionInput.value = "";
-        view.displayTodos();
-    },
-    toggleCompleted: function () {
-        var toggleCompletedTodoPosition = document.getElementById("toggleCompletedTodoPosition");
-        todoList.toggleCompleted(toggleCompletedTodoPosition.valueAsNumber);
-        toggleCompletedTodoPosition.value = "";
-        view.displayTodos();
-    },
-    toggleAll: function () {
-        todoList.toggleAll();
-        view.displayTodos();
-    }
-
-};
-
-var view = {
-    displayTodos: function () {
-        var todosUL = document.querySelector('ul');
-        todosUL.innerHTML = "";
-        for (var i = 0; i < todoList.todos.length; i++) {
-            var todoLI = document.createElement('li');
-            var todo = todoList.todos[i];
-            var todoTextWithCompletion = '';
-
-            if (todo.completed === true) {
-                todoTextWithCompletion = '(x) ' + todo.todoText;
-            } else {
-                todoTextWithCompletion = '( ) ' + todo.todoText;
-            }
-
-            todoLI.textContent = todoTextWithCompletion;
-            todosUL.appendChild(todoLI);
+    addTodo: function(e) {
+        if(e.keyCode === 13) {
+            var todotext = document.getElementById("addTodoTextInput");
+            todoModel.addTodo(todotext.value);
+            todotext.value = "";
+            todoShow.displayTodos();
         }
+    },
+
+    deleteTodo: function(e) {
+        todoModel.deleteTodo(e.currentTarget.parentNode.id);
+        todoShow.displayTodos();
+    },
+ 
+    toggleTodo: function(e) {
+         todoModel.toggleTodo(e.currentTarget.parentNode.id);
+         todoShow.displayTodos();
     }
-};
+  
+}
+
