@@ -34,31 +34,35 @@ var todoShow = {
             //create Input Container Div
              var inputContainerDiv = document.createElement("div");
              inputContainerDiv.className = "inputContainer";
-
-             //create select tag
-              var selectDiv = document.createElement("div");
-              selectDiv.innerHTML = "<p onclick='handlers.toggleTodo(event)'>O</p>";
-              selectDiv.className = "select";
-              selectDiv.id = i; 
+             
+               //create toggle tag
+              var toggleDiv = document.createElement("div");
+              toggleDiv.innerHTML = "<p onclick='handlers.toggleTodo(event)'>O</p>";
+               if(todoModel.todos[i].complete) {
+                    toggleDiv.className = "toggle toggle-complete";
+                 } else { 
+                    toggleDiv.className = "toggle toggle-uncomplete";
+                 }
+              toggleDiv.id = i; 
 
              //create input tag
              var inputTag = document.createElement("input");
              inputTag.setAttribute("value", todoModel.todos[i].todoText);
              if(todoModel.todos[i].complete) {
-                 inputTag.className = "complete";
+                 inputTag.className = "todo-complete";
              }
 
-             //create toggle tag
-              var toggleDiv = document.createElement("div");
-              toggleDiv.innerHTML = "<p onclick='handlers.deleteTodo(event)'>X</p>";
-              toggleDiv.className = "toggle";
-              toggleDiv.id = i; 
+               //create delete tag
+              var deleteDiv = document.createElement("div");
+              deleteDiv.innerHTML = "<p onclick='handlers.deleteTodo(event)'>X</p>";
+              deleteDiv.className = "delete";
+              deleteDiv.id = i; 
 
              //append inputContainer Div to Container Div
              inputContainerDiv.appendChild(inputTag);
-             todoContainerDiv.appendChild(selectDiv);
-             todoContainerDiv.appendChild(inputContainerDiv);
              todoContainerDiv.appendChild(toggleDiv);
+             todoContainerDiv.appendChild(inputContainerDiv);
+             todoContainerDiv.appendChild(deleteDiv);
              parentContainer.appendChild(todoContainerDiv);
 
         }
