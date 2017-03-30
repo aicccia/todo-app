@@ -153,17 +153,17 @@ var handlers = {
          todoShow.displayTodos();
     },
    
-    viewAll: function(e) {
+    viewAll: function() {
         todoModel.showMode = 1;
         todoShow.displayTodos();  
     },
 
-    viewCompleted: function(e) {
+    viewCompleted: function() {
         todoModel.showMode = 2;
         todoShow.displayTodos();  
     },
 
-    viewActive: function(e) {
+    viewActive: function() {
         todoModel.showMode = 3; 
         todoShow.displayTodos();   
     },
