@@ -9,31 +9,28 @@
 </head>
 
 <body>
-    <main>
-        <header>
-            <h1>todos</h1>
-        </header>
-        
-            <div class="todoContainer">
-                <div class="delete"></div>
-                <div class="inputContainer">
-                    <input onkeypress="handlers.addTodo(event)" type="text" placeholder="What needs to be done?" id="addTodoTextInput">
-                </div>
-                <div class="toggle"></div>
+<main>
+    <header>
+        <h1>todos</h1>
+    </header>
+
+    <div class="container">
+        <div class="todoContainer">
+            <div class="delete"></div>
+            <div class="inputContainer">
+                <input onkeypress="handlers.addTodo(event)" type="text" placeholder="What needs to be done?"
+                       id="addTodoTextInput">
             </div>
+            <div class="toggle"></div>
+        </div>
         <div id="parentContainer"></div>
-        <div id="parentContainer"></div>
+    </div>
 
 
-       
-
-        
+</main>
 
 
-    </main>
-
-
-    <script src="todo-app.js"></script>
+<script src="todo-app.js"></script>
 </body>
 
 </html>

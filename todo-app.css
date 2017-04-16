@@ -32,13 +32,16 @@ input:focus {
   outline: none;
 }
 
+.container {
+    box-shadow: 5px 5px 20px grey;
+}
+
 .todoContainer, .footer {
     width: 600px;
     height: 50px;
     display: flex;
     background-color: hsl(0, 0%, 95%);
     border-bottom: 1px solid grey;
-    box-shadow: 5px 5px 20px grey;
 }
 
 .todoContainer:hover .delete{
@@ -57,7 +60,6 @@ input:focus {
     text-align: center;
     font-size: 18px;
     font-family: Arial, Helvetica, sans-serif;
-    background-color: hsl(0, 0%, 95%);
     line-height: 50px;
    
 }
