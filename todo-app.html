@@ -2,35 +2,35 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <title>To Do App</title>
-    <link rel="stylesheet" href="cssreset.css">
-    <link rel="stylesheet" href="todo-app.css">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>To Do App</title>
+	<link rel="stylesheet" href="css/cssreset.css">
+	<link rel="stylesheet" href="css/todo.css">
 </head>
 
 <body>
 <main>
-    <header>
-        <h1>todos</h1>
-    </header>
+	<header>
+		<h1>todos</h1>
+	</header>
 
-    <div class="container">
-        <div class="todoContainer">
-            <div class="delete"></div>
-            <div class="inputContainer">
-                <input onkeypress="handlers.addTodo(event)" type="text" placeholder="What needs to be done?"
-                       id="addTodoTextInput">
-           
-            </div>
-            <div class="toggle"></div>
-        </div>
-        <div id="parentContainer"></div>
-    </div>
+	<div class="container">
+		<div class="todoContainer">
+			<div class="delete"></div>
+			<div class="inputContainer">
+				<input onkeypress="handlers.addTodo(event)" type="text" placeholder="What needs to be done?"
+					   id="addTodoTextInput">
+			</div>
+			<div class="toggle"></div>
+		</div>
+		<div id="parentContainer"></div>
+	</div>
 
 </main>
 
 
-<script src="todo-app.js"></script>
+<script src="js/todo.js"></script>
 </body>
 
 </html>

@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" exclude=".svn;.cvs;.idea;.DS_Store;.git;.hg;.vscode;.gitignore">
+  <component name="PublishConfigData" serverName="eHost" exclude=".svn;.cvs;.idea;.DS_Store;.git;.hg;.vscode;.gitignore">
     <serverData>
-      <paths name="Godaddy">
+      <paths name="eHost">
         <serverdata>
           <mappings>
-            <mapping deploy="/todoapp/" local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="ehost">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>
