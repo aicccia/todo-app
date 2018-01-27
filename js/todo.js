@@ -1,3 +1,7 @@
+$(document).ready(function() {
+	todoShow.displayTodos();
+});
+
 
 //Model
 
@@ -9,12 +13,22 @@ const todoModel = {
 	//function to add todos
 	addTodo (todo) {
 		this.todos.push({todoText: todo, complete: false});
+
+		const json = JSON.stringify(this.todos);
+		localStorage.setItem('todos', json);
+
 	},
 	deleteTodo (todo) {
 		this.todos.splice(todo, 1);
+
+		const json = JSON.stringify(this.todos);
+		localStorage.setItem('todos', json);
 	},
 	toggleTodo (todo) {
 		this.todos[todo].complete = !this.todos[todo].complete;
+
+		const json = JSON.stringify(this.todos);
+		localStorage.setItem('todos', json);
 	},
 
 	clearCompleteTodo () {
@@ -23,6 +37,9 @@ const todoModel = {
 				this.todos.splice(i, 1);
 			}
 		}
+
+		const json = JSON.stringify(this.todos);
+		localStorage.setItem('todos', json);
 	},
 
 	changeTodo (todo, newtext) {
@@ -32,6 +49,9 @@ const todoModel = {
 		else {
 			this.todos.splice(todo, 1, {todoText: newtext, complete: false});
 		}
+
+		const json = JSON.stringify(this.todos);
+		localStorage.setItem('todos', json);
 	}
 };
 
@@ -40,6 +60,13 @@ const todoShow = {
 	activeCount: 0,
 	completeExist: false,
 	displayTodos () {
+		const json = localStorage.getItem('todos');
+		if (json) {
+			todoModel.todos = JSON.parse(json);
+		} else {
+			todoModel.todos = [];
+		}
+
 		this.activeCount = 0;
 		this.completeExist = false;
 		let parentContainer = document.querySelector("#parentContainer");
